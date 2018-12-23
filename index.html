@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Document</title>
+        <script src="https://map.qq.com/api/js?v=2.exp&key=GCSBZ-OMFCU-PYOV5-BQWD7-MIIY7-RUBBR&libraries=convertor"></script>
+    </head>
+    <body>
+        <input type="text" placeholder="x坐标" class="x-input" />
+        <input type="text" placeholder="y坐标" class="y-input" />
+        <button onClick="convertCoor()">convert</button>
+        <div class="result"></div>
+        <script>
+            function convertCoor() {
+                let xInput = document.body.querySelector(".x-input");
+                let yInput = document.body.querySelector(".y-input");
+                let xCoor = xInput.value;
+                let yCoor = yInput.value;
+                debugger;
+                qq.maps.convertor.translate(
+                    generateLatlng(xCoor, yCoor),
+                    1,
+                    function(res) {
+                        console.log(res);
+                        let resultCon = document.body.querySelector(".result");
+                        resultCon.innerHTML = res;
+                    }
+                );
+            }
+
+            function generateLatlng(x, y) {
+                return new qq.maps.LatLng(x, y);
+            }
+        </script>
+    </body>
+</html>
